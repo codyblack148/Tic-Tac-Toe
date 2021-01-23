@@ -113,9 +113,10 @@ def play_game(blank_board):
         display_board(game_board)
         print('Player 1:')
         player_choice = player_input(player_assignment[0])
-        if ' ' not in game_board[player_choice - 1]:
+        while ' ' not in game_board[player_choice - 1]:
             print("You must choose a spot that doesn't already have an X or O.")
-            continue
+            player_choice = player_input(player_assignment[0])
+            
         game_board = update_board(player_assignment[0],player_choice,game_board)
         #print(game_board)
         game_status = game_end_check(game_board,player_assignment[0],player_assignment)
@@ -130,9 +131,9 @@ def play_game(blank_board):
         display_board(game_board)
         print('Player 2:')
         player_choice = player_input(player_assignment[1])
-        if ' ' not in game_board[player_choice-1]:
-            print("You must choose a spot that doesn't already have an X or O.")
-            continue
+        while ' ' not in game_board[player_choice - 1]:
+             print("You must choose a spot that doesn't already have an X or O.")
+             player_choice = player_input(player_assignment[1])
         game_board = update_board(player_assignment[1],player_choice,game_board)
         game_status = game_end_check(game_board,player_assignment[1],player_assignment)
         if True in game_status:
