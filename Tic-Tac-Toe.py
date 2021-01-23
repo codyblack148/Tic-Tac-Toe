@@ -25,9 +25,13 @@ def player_input(marker):
     out = ''
     check_list = [1,2,3,4,5,6,7,8,9]
     while out not in check_list:
-        out = int(input(f'Please enter your {marker} using the keys 1-9 on the numpad.\n'))
-        if out not in check_list:
-            print("You have to input a number between 1 and 9.")
+        out = input(f'Please enter your {marker} using the keys 1-9 on the numpad.\n')
+        if out.isdigit():
+            out = int(out)
+            if out not in check_list:
+                print('You have to enter a digit between 1 and 9.')
+        else:
+            print('You have to enter a digit between 1 and 9.')
     return out
 
 # Function to check if board is full or if someone has won. Return list with 3 booleans. Booleans correspond to winning player, or tie.
